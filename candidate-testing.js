@@ -37,10 +37,8 @@ function askQuestion() {
   for (i = 0; i < 5; i++) {
     candidateAnswer = input.question(`${questions[i]}: `);
     candidateAnswers.push(candidateAnswer);
-    console.log(candidateAnswers);
     candidateAnswer = '';
   }
-  console.log(candidateAnswers);
   return candidateAnswers
 }
 
@@ -67,7 +65,7 @@ function runProgram() {
   askQuestion();
   gradeQuiz(candidateAnswers);
 }
-console.log(runProgram());
+
 // ----------- Don't write any code or change any code below this line ---------- //
 module.exports = {
   candidateName: candidateName,
