@@ -36,12 +36,22 @@ function askQuestion() {
   return candidateAnswers;
 }
 
+function isCorrectAnswer (correct, response) {
+  let caseSensitiveCorrectAnswer = correct.toLowerCase();
+  let caseSensitiveCandidateResponse = response.toLowerCase();
+  if (caseSensitiveCorrectAnswer === caseSensitiveCandidateResponse) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function gradeQuiz(answers) {
   let totalCorrectAnswers = 0;
   console.log("\nLet's grade your quiz!");
 
   for (i = 0; i < 5; i++) {
-    if (correctAnswers[i].toLowerCase() === answers[i].toLowerCase()) {
+    if (isCorrectAnswer(correctAnswers[i], answers[i])) {
       console.log(`For question ${i + 1}, you entered the correct answer: ${answers[i]}.`);
       totalCorrectAnswers += 1;
     } else {
@@ -57,8 +67,7 @@ function runProgram() {
   console.log(`Hello, ${candidateName}!\n`);
   askQuestion(questions);
   console.log(`Here were the answers you gave: ${candidateAnswers.join(" ,")}.\n`);
-  gradeQuiz(candidateAnswers);
-  console.log(`Your grade for this quiz is: ${gradeQuiz()}%`);
+  console.log(`\nYour grade for this quiz is: ${gradeQuiz(candidateAnswers)}%`);
 }
 
 // ----------- Don't write any code or change any code below this line ---------- //
